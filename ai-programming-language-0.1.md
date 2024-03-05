@@ -159,17 +159,17 @@ This sentence will always be rendered.
 
 (# this is a comment that will not be rendered)
 
-((isAngryConversation({conversation.summary}) && isCalmCharacter({userInfo.personality}))
+((isAngryConversation({conversation.summary}) && isCalmCharacter({userInfo.personality})
 
 This will only be rendered if the condition above is true
 The LLM will evaluate the above 'soft code' functions and provide a boolean response
 
-  ((isEvening("The current time is {time}"))
+  ((isEvening("The current time is {time}")
 
     This nested sentence will only be rendered if both conditions are true
 
-  (# attempt to figure out where the user went to school this will only be updated if both conditions above are true)
-  (= "Where did {user} go to school?" -> userInfo.school)
+    (# attempt to figure out where the user went to school this will only be updated if both conditions above are true)
+    (= "Where did {user} go to school?" -> userInfo.school)
 
   )
 
