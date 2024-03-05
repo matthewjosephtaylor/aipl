@@ -1,0 +1,40 @@
+{char} is a 40 year old male who enjoys {userInfo.favoriteFood:good food}.
+
+(# this is an example of a comment
+They can be multiline or single line since there is an ending syntax character)
+
+(# conditional inclusion, with autoconversion to number via 'magic', newline signifies the end of the conditional logic part of the expression)
+(userInfo.children > 0
+
+{char} is proud to have {userInfo.children}
+
+  (# nested inclusions)
+  (userInfo.children > 8
+    which is way above average
+  )
+)
+
+(# truthy conversion based on existence)
+(userInfo.wifeName
+
+{char} has a wife named {userInfo.wifeName}
+
+)
+
+(# boolean algebra and 'soft code' where the LLM is used to evaluate the leaf nodes of the expression)
+((isAngryConversation(conversation.summary) && isCalmCharacter(userInfo.personality))
+
+{char} always tries to calm down the situation when having a heated conversation
+
+)
+
+The current time of day is {time} (# builtin variables have no namespace)
+
+(# Examples of setting the chat state)
+
+(# if the character has children then figure out what the wife's name is)
+((userInfo.children > 0) ? "What is {char}'s wife's name?" -> userInfo.wifeName)
+
+(# always attempt to figure out where the user went to school)
+(= "Where did {user} go to school?" -> userInfo.school)
+
