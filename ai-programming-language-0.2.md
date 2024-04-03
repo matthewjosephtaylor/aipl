@@ -288,12 +288,12 @@ Note that assignment is 'required' however the language-user is free to ingore t
 
 One of the main uses of AIPL is to modify system prompts. This is primarily done via a conditional expression syntax fo the form `(<expression> <body>)`.
 
-If the <expression> evaluates to true then the body of the expression is evaluated further.
+If the `<expression>` evaluates to true then the body of the expression is evaluated further.
 
 Note that conditional expressions can be nested within the <body> of a parent conditional expression to the practical limits of memory.
 
 ```
-(foo.count > 42
+((foo.count > 42)
   This will be emitted as text for system prompting, and will not be emitted if the above condition is false.
 )
 ```
