@@ -3,7 +3,7 @@
 
 [previous versions](./history/)
 
-current version: 0.6
+current version: 0.7
 
 A simple programming language for LLM driven AI Agents.
 
