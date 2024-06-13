@@ -3,7 +3,7 @@
 
 [previous versions](./history/)
 
-current version: 0.6
+current version: 0.7
 
 A simple programming language for LLM driven AI Agents.
 
@@ -25,6 +25,20 @@ A simple programming language for LLM driven AI Agents.
     - [Operators](#operators)
       - [Special Operators](#special-operators)
     - [Quoted String Literals](#quoted-string-literals)
+    - [Numbers](#numbers)
+    - [Lists](#lists)
+    - [Entries](#entries)
+    - [Variable Assignment](#variable-assignment)
+      - [Softcode Variable Assignment](#softcode-variable-assignment)
+      - [Direct Variable Assignment](#direct-variable-assignment)
+    - [URL Functions](#url-functions)
+      - [GET URL Functions](#get-url-functions)
+      - [POST URL Functions](#post-url-functions)
+      - [String Literals in URL Path](#string-literals-in-url-path)
+    - [Conditional Expressions](#conditional-expressions)
+    - [Transforms](#transforms)
+      - [Extracting and Transforming JSON Data with the `query` Transform](#extracting-and-transforming-json-data-with-the-query-transform)
+
 
 ## Definition of terms
 
@@ -382,8 +396,6 @@ Note that conditional expressions can be nested within the <body> of a parent co
 
 ### Transforms
 
-## Transforms
-
 Transforms in AIPL allow users to manipulate and transform the values of chat-state variables. Transforms are functions that can be applied to a chat-state variable using the dot notation.
 
 Here are a few examples of transforms:
@@ -401,7 +413,7 @@ Transforms can be used both inside string-templates and while performing assignm
 
 - `('{"fish":"taste fishy but good for you"}' --> test.out.query('fish'))`: 
 
-### Extracting and Transforming JSON Data with the `query` Transform
+#### Extracting and Transforming JSON Data with the `query` Transform
 
 In AIPL, you can use the `query` transform to extract and transform data from JSON objects. This transform is based on the JMESPath query language, which provides a powerful and flexible way to query and manipulate JSON data.
 
