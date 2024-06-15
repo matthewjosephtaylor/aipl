@@ -3,7 +3,7 @@
 
 [previous versions](./history/)
 
-current version: 0.7
+current version: 0.8
 
 A simple programming language for LLM driven AI Agents.
 
@@ -14,6 +14,8 @@ A simple programming language for LLM driven AI Agents.
   - [State, Events, Logic](#state-events-logic)
     - [State](#state)
       - [Updating State](#updating-state)
+        - [Update the State](#update-the-state)
+        - [Update State Example](#update-state-example)
     - [Prompt Template](#prompt-template)
       - [Basic Prompt Template Example](#basic-prompt-template-example)
       - [Advanced Prompt Template Example](#advanced-prompt-template-example)
@@ -38,8 +40,9 @@ A simple programming language for LLM driven AI Agents.
     - [Conditional Expressions](#conditional-expressions)
     - [Transforms](#transforms)
       - [Extracting and Transforming JSON Data with the `query` Transform](#extracting-and-transforming-json-data-with-the-query-transform)
+    - [Asynchronous Operations](#asynchronous-operations)
 
-
+ 
 ## Definition of terms
 
 LLMs (Large Language Models) are _effectively_ AI (Artificial Intelligence) as most people imagine and use that term.
@@ -428,4 +431,28 @@ In this example, the `query` transform is applied to the JSON object `{"name": "
 For more information on the JMESPath query language and its capabilities, you can visit the [JMESPath website](https://jmespath.org/).
 
 
+#### Asynchronous Operations
 
+In the AI Programming Language version 0.8, handling the asynchronous nature of operations, such as fetching data from URLs, is elegantly managed through a unique syntax. This feature allows for seamless integration of asynchronous tasks within your code, ensuring that operations dependent on external data can be executed without blocking the main execution thread.
+
+**Example:**
+
+Consider a scenario where you need to fetch a cat fact from an online API (`https://catfact.ninja/fact`). The language simplifies this process by using a straightforward arrow (`->`) and `.then` syntax, which intuitively maps the flow of data and subsequent operations.
+
+```markdown
+(https://catfact.ninja/fact -> cat.json.then(
+  ("got JSON from webcall: '{cat.json}'" --> got.json.then(
+     ("Nesting works too: {got.json}" --> got.gotten)
+  ))
+))
+```
+
+**How It Works:**
+
+1. **Fetching Data:** The operation `(https://catfact.ninja/fact -> cat.json.then(...))` initiates an asynchronous call to the specified URL. Upon successful retrieval of the data, it is stored in `cat.json`.
+
+2. **First-Level Processing:** The snippet `"got JSON from webcall: '{cat.json}'" --> got.json.then(...)` demonstrates how to process the fetched data. Here, `cat.json` is used within a string to indicate the successful retrieval of data. This processed information is then passed on to the next operation as `got.json`.
+
+3. **Nested Operations:** The language supports nesting of asynchronous operations as shown by `("Nesting works too: {got.json}" --> got.gotten)`. This allows for further processing of the data in `got.json`, demonstrating the language's capability to handle complex asynchronous workflows with ease.
+
+This feature showcases the language's powerful and intuitive approach to dealing with the asynchronous nature of web-based functions, making it easier for developers to write clean and efficient code for operations that require fetching and processing data from external sources.
