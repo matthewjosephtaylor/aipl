@@ -40,6 +40,7 @@ A simple programming language for LLM driven AI Agents.
     - [Conditional Expressions](#conditional-expressions)
     - [Transforms](#transforms)
       - [Extracting and Transforming JSON Data with the `query` Transform](#extracting-and-transforming-json-data-with-the-query-transform)
+      - [JSON Escape Transforms](#json-escape-transforms)
       - [Date and Time Transforms](#date-and-time-transforms)
     - [Asynchronous Operations](#asynchronous-operations)
  
@@ -443,6 +444,20 @@ To use the `query` transform, you can specify the path to the desired data using
 In this example, the `query` transform is applied to the JSON object `{"name": "John", "age": 30}`. The transform extracts the value of the `name` key, resulting in the output `John`.
 
 For more information on the JMESPath query language and its capabilities, you can visit the [JMESPath website](https://jmespath.org/).
+
+#### JSON Escape Transforms
+
+The JSON escape transform is used to escape strings so that they can be safely sent across the wire to third parties via URL functions.
+
+Example:
+```
+(https://example.com(body==''
+
+{"foo": "{risky.var.escapeJson()}"
+
+'') -> webcall.resp)
+```
+
 
 #### Date and Time Transforms
 
